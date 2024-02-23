@@ -26,6 +26,7 @@ public class CommissionApp {
         Logger.getLogger().INFO("Application started");
         CommissionIO commissionIO = CommissionIO.getInstance();
         List<CommissionRawData> commissions = commissionIO.readCommissions("./resources/" + resourceName);
+        // Different parsers can be used here for different .xml representations
         CommissionToXMLParsingObject normalizedBusinessAssociates = CommissionParserSummed.getInstance().parse(commissions);
         commissionIO.saveCommissions(normalizedBusinessAssociates);
         Logger.getLogger().INFO("Application finished");
