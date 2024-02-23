@@ -1,10 +1,16 @@
-package src.commission;
+package src.commission.parser;
+
+import src.commission.CommissionType;
+import src.commission.dto.BusinessAssociates;
+import src.commission.dto.CommissionRawData;
+import src.logger.Logger;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static src.calculator.CommissionCalculator.findCommissionForItem;
+import static src.logger.Logger.getLogger;
 
 public class CommissionParserByType implements CommissionParser {
 
@@ -19,6 +25,8 @@ public class CommissionParserByType implements CommissionParser {
 
     public CommissionToXMLParsingObject parse(List<CommissionRawData> commissionRawDataList) {
         BusinessAssociates businessAssociates = new BusinessAssociates();
+        Logger logger = getLogger();
+        logger.DEBUG("Started parsing to by-type structure.");
         for (CommissionRawData commissionRawData : commissionRawDataList) {
             String businessAssociateName = commissionRawData.getBusinessAssociate();
             BusinessAssociates.Commissions commissions = businessAssociates.findCommissionByAssociateName(businessAssociateName);
@@ -34,6 +42,8 @@ public class CommissionParserByType implements CommissionParser {
                 businessAssociates.addBusinessAssociate(businessAssociateName, commissions);
             }
         }
+        logger.INFO("Successfully parsed to usable structure: ");
+        logger.INFO(businessAssociates.toString());
         return businessAssociates;
     }
 

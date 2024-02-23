@@ -1,7 +1,8 @@
 package src.io;
 
-import src.commission.CommissionRawData;
-import src.commission.CommissionToXMLParsingObject;
+import src.commission.dto.CommissionRawData;
+import src.commission.parser.CommissionToXMLParsingObject;
+import src.logger.Logger;
 import src.xml.XML;
 
 import java.io.File;
@@ -23,20 +24,23 @@ public class CommissionIO {
 
     public List<CommissionRawData> readCommissions(String path) throws IOException {
         if (path == null || path.isEmpty()) {
+            Logger.getLogger().ERROR("Reading commissions failed. Invalid path.");
             throw new IllegalArgumentException("Path cannot be null or empty");
         }
         File resource = new File(path);
         if (!resource.exists()) {
+            Logger.getLogger().ERROR("Reading commissions failed. File does not exist.");
             throw new IllegalArgumentException("Resource doesn't exist");
         }
-        return CommissionReader.getInstance().parseCommissions(resource);
+        return CommissionReader.getInstance().readAndParseToRawData(resource);
     }
 
     public void saveCommissions(CommissionToXMLParsingObject businessAssociates) throws IOException {
-        File outputFile = new File("BusinessAssociates.xml");
         XML xml = new XML(StandardCharsets.ISO_8859_1);
+        Logger.getLogger().INFO("Creating XML object.");
         String xmlString = xml.parseObjectToXML(businessAssociates, Double.class);
-        try (FileWriter fileWriter = new FileWriter(outputFile)) {
+        Logger.getLogger().INFO("Saving XML file.");
+        try (FileWriter fileWriter = new FileWriter("BusinessAssociates.xml")) {
             fileWriter.append(xmlString);
         }
     }

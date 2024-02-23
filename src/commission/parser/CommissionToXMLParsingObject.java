@@ -1,4 +1,4 @@
-package src.commission;
+package src.commission.parser;
 
 public interface CommissionToXMLParsingObject {
 }

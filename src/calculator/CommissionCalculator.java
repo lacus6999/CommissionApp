@@ -1,6 +1,7 @@
 package src.calculator;
 
 import src.commission.CommissionType;
+import src.logger.Logger;
 
 public class CommissionCalculator {
 
@@ -23,6 +24,7 @@ public class CommissionCalculator {
                 else return commissionWithoutBonus + 40000;
             }
         }
+        Logger.getLogger().ERROR("Reached unknown commissionType");
         throw new IllegalStateException("Invalid CommissionType");
     }
 }

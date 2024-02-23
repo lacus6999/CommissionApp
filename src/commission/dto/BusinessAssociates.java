@@ -1,4 +1,7 @@
-package src.commission;
+package src.commission.dto;
+
+import src.commission.CommissionType;
+import src.commission.parser.CommissionToXMLParsingObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,10 +24,13 @@ public class BusinessAssociates implements CommissionToXMLParsingObject {
     public static class Commissions {
         public Commissions() {
         }
+
         private Map<CommissionType, Double> commissions;
+
         public Map<CommissionType, Double> getCommissions() {
             return commissions;
         }
+
         public void setCommissions(Map<CommissionType, Double> commissions) {
             this.commissions = commissions;
         }

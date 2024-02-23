@@ -1,4 +1,6 @@
-package src.commission;
+package src.commission.dto;
+
+import src.commission.parser.CommissionToXMLParsingObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +19,7 @@ public class BusinessAssociatesSummed implements CommissionToXMLParsingObject {
     public void addCommissionToAssociate(String associateName, double commissionAmount) {
         businessAssociates.put(associateName, businessAssociates.getOrDefault(associateName, 0.0) + commissionAmount);
     }
+
     public void addBusinessAssociate(String associateName, Double commission) {
         businessAssociates.put(associateName, commission);
     }

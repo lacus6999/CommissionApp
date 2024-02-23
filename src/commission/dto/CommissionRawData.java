@@ -1,4 +1,6 @@
-package src.commission;
+package src.commission.dto;
+
+import src.commission.CommissionType;
 
 public class CommissionRawData {
     private CommissionType commissionType;
