@@ -13,13 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static test.helper.Assertions.assertEquals;
-class SimpleClass {
-    private String name = "testName";
-}
+
 public class XMLTest {
 
 
     private XML xml = new XML(StandardCharsets.ISO_8859_1);
+
     @Test
     public void parseSimpleObject() {
         SimpleClass simpleClass = new SimpleClass();
@@ -31,6 +30,7 @@ public class XMLTest {
                 "</SimpleClass>";
         assertEquals(expectedXML, xml.parseObjectToXML(simpleClass, String.class));
     }
+
     @Test
     public void parseBusinessAssociateSummed() {
         List<CommissionRawData> commissionRawData = new ArrayList<>();

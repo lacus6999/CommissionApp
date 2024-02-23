@@ -3,7 +3,6 @@ package test.testclasses;
 import main.calculator.Million;
 import main.commission.CommissionType;
 import main.commission.dto.BusinessAssociatesByType;
-import main.commission.dto.BusinessAssociatesByType;
 import main.commission.dto.CommissionRawData;
 import main.commission.parser.CommissionParserByType;
 import test.helper.Test;

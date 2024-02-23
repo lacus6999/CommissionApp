@@ -3,10 +3,6 @@ package test;
 
 import main.logger.Logger;
 import test.helper.Test;
-import test.testclasses.CommissionCalculatorTest;
-import test.testclasses.CommissionParserByTypeTest;
-import test.testclasses.CommissionParserSummedTest;
-import test.testclasses.XMLTest;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -24,12 +20,12 @@ public class TestRunner {
     }
 
     void init() {
-        Logger.getLogger().muteLogger();
+        Logger.getLogger().disableLogger();
         Set<Class<?>> classes = findAllClassesByPackage("test.testclasses");
-        classes.forEach(this::run);
+        classes.forEach(this::runTests);
     }
 
-    public void run(Class<?> testClass) {
+    public void runTests(Class<?> testClass) {
         List<Method> methods = Arrays.stream(testClass.getDeclaredMethods())
                 .filter(method -> method.isAnnotationPresent(Test.class))
                 .collect(Collectors.toList());
@@ -40,12 +36,13 @@ public class TestRunner {
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println(method.getName() + " \u001B[31mfailed\u001B[0m" + "\n");
-                if(e.getMessage() != null) {
+                if (e.getMessage() != null) {
                     System.out.println("Error message: " + e.getMessage());
                 }
             }
         });
     }
+
     public Set<Class<?>> findAllClassesByPackage(String packageName) {
         InputStream stream = ClassLoader.getSystemClassLoader()
                 .getResourceAsStream(packageName.replaceAll("[.]", "/"));
@@ -55,6 +52,7 @@ public class TestRunner {
                 .map(line -> getClass(line, packageName))
                 .collect(Collectors.toSet());
     }
+
     private Class<?> getClass(String className, String packageName) {
         try {
             return Class.forName(packageName + "."

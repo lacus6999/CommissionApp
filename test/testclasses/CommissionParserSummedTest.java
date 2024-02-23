@@ -5,7 +5,6 @@ import main.commission.CommissionType;
 import main.commission.dto.BusinessAssociatesSummed;
 import main.commission.dto.CommissionRawData;
 import main.commission.parser.CommissionParserSummed;
-import main.commission.parser.CommissionToXMLParsingObject;
 import test.helper.Test;
 
 import java.util.ArrayList;

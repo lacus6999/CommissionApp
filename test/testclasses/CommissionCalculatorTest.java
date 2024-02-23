@@ -13,7 +13,7 @@ import static test.helper.Assertions.assertNotEquals;
 public class CommissionCalculatorTest {
 
     @Test
-    public void MillionCalculatorTest() {
+    public void millionCalculatorTest() {
         assertEquals(0D, Million.of(0D));
         assertEquals(1000000D, Million.of(1));
         assertEquals(3500000D, Million.of(3.5));
@@ -26,6 +26,7 @@ public class CommissionCalculatorTest {
         assertEquals(0.01, calculateOnePercent(1D));
         assertEquals(10000D, calculateOnePercent(Million.of(1)));
     }
+
     @Test
     public void testCommissionCalculator_typeA() {
         assertEquals(0D, findCommissionForItem(CommissionType.A, 0D));
@@ -37,6 +38,7 @@ public class CommissionCalculatorTest {
         assertEquals(40000.0, findCommissionForItem(CommissionType.A, Million.of(20)));
         assertEquals(40000.0, findCommissionForItem(CommissionType.A, Million.of(200)));
     }
+
     @Test
     public void testCommissionCalculator_typeB() {
         assertEquals(0D, findCommissionForItem(CommissionType.B, 0D));
@@ -48,6 +50,7 @@ public class CommissionCalculatorTest {
         assertEquals(50000.0, findCommissionForItem(CommissionType.B, Million.of(16)));
         assertEquals(50000.0, findCommissionForItem(CommissionType.B, Million.of(200)));
     }
+
     @Test
     public void testCommissionCalculator_typeC() {
         assertEquals(0D, findCommissionForItem(CommissionType.C, 0D));

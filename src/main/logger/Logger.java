@@ -13,7 +13,7 @@ public class Logger {
     private Logger() {
     }
 
-    private Boolean mute = false;
+    private Boolean disabled = false;
     private static final Logger instance = new Logger();
     private static final String DEBUG_TAG = "[DEBUG]";
     private static final String ERROR_TAG = "[ERROR]";
@@ -26,14 +26,14 @@ public class Logger {
 
     public void DEBUG(String message) {
         String logString = getLogString(message, DEBUG_TAG);
-        if (!mute) {
+        if (!disabled) {
             System.out.println(logString);
         }
     }
 
     public void INFO(String message) {
         String logString = getLogString(message, INFO_TAG);
-        if (!mute) {
+        if (!disabled) {
             writeLogFile(logString);
             System.out.println(logString);
         }
@@ -41,7 +41,7 @@ public class Logger {
 
     public void ERROR(String message) {
         String logString = getLogString(message, ERROR_TAG);
-        if (!mute) {
+        if (!disabled) {
             writeLogFile(logString);
             System.out.println(logString);
         }
@@ -70,8 +70,8 @@ public class Logger {
         }
     }
 
-    public void muteLogger() {
-        mute = true;
+    public void disableLogger() {
+        disabled = true;
     }
 
 }

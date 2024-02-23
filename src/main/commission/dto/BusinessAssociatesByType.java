@@ -21,6 +21,7 @@ public class BusinessAssociatesByType implements CommissionToXMLParsingObject {
     public void addBusinessAssociate(String associateName, Commissions commissions) {
         businessAssociates.put(associateName, commissions);
     }
+
     public Map<String, Commissions> getBusinessAssociates() {
         return businessAssociates;
     }

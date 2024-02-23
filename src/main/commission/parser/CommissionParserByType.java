@@ -48,7 +48,7 @@ public class CommissionParserByType implements CommissionParser {
         Map<String, BusinessAssociatesByType.Commissions> businessAssociatesMap = businessAssociatesByType.getBusinessAssociates();
         for (String associateName : businessAssociatesMap.keySet()) {
             Map<CommissionType, Double> commissions = businessAssociatesMap.get(associateName).getCommissions();
-            for(CommissionType commissionType : commissions.keySet()) {
+            for (CommissionType commissionType : commissions.keySet()) {
                 Double commission = commissions.get(commissionType);
                 commissions.put(commissionType, calculateOnePercent(commission) + findCommissionForItem(commissionType, commission));
             }
