@@ -49,7 +49,7 @@ public class Logger {
 
     private static String getLogString(String message, String TAG) {
         return message.lines()
-                .map(str -> LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm")) + " " + TAG + ": " + str)
+                .map(str -> LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) + " " + TAG + ": " + str)
                 .collect(Collectors.joining("\n"));
     }
 

@@ -1,6 +1,4 @@
 package test;
-
-
 import main.logger.Logger;
 import test.helper.Test;
 
