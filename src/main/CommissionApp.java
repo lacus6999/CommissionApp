@@ -13,13 +13,13 @@ import java.util.List;
 public class CommissionApp {
 
     public static void main(String[] args) throws IOException {
-        new CommissionApp().init();
+        new CommissionApp().init(args[0]);
     }
 
-    public void init() throws IOException {
+    public void init(String resourceName) throws IOException {
         Logger.getLogger().INFO("Application started");
         CommissionIO commissionIO = CommissionIO.getInstance();
-        List<CommissionRawData> commissions = commissionIO.readCommissions("./src/resources/commission_resource.txt");
+        List<CommissionRawData> commissions = commissionIO.readCommissions("./src/resources/" + resourceName);
         CommissionToXMLParsingObject normalizedBusinessAssociates = CommissionParserSummed.getInstance().parse(commissions);
         commissionIO.saveCommissions(normalizedBusinessAssociates);
         Logger.getLogger().INFO("Application finished");
