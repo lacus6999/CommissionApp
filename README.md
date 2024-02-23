@@ -72,8 +72,8 @@ This is the driver class of the application. It connects the different parts tog
 ## Testing
 
 The application is using its own test implementation. The tests are written inside
-the [testclasses](src/test/testclasses) package. Most of the important bits are tested, although there was no time to
-implement some integration test.
+the [testclasses](src/test/testclasses) package. Most of the important bits are tested, although there was not enough
+time to implement some integration test.
 
 The test are ran automatically using the [TestRunner](src/test/TestRunner.java) class. It seeks the testclasses package
 and runs each test method marked with the [@Test](src/test/helper/Test.java) annotation.
