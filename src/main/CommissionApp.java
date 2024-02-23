@@ -1,10 +1,11 @@
-package src;
+package main;
 
-import src.commission.dto.CommissionRawData;
-import src.commission.parser.CommissionParserSummed;
-import src.commission.parser.CommissionToXMLParsingObject;
-import src.io.CommissionIO;
-import src.logger.Logger;
+
+import main.commission.dto.CommissionRawData;
+import main.commission.parser.CommissionParserSummed;
+import main.commission.parser.CommissionToXMLParsingObject;
+import main.io.CommissionIO;
+import main.logger.Logger;
 
 import java.io.IOException;
 import java.util.List;

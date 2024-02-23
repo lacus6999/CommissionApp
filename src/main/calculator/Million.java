@@ -1,4 +1,4 @@
-package src.calculator;
+package main.calculator;
 
 public class Million {
     public static double of(double value) {

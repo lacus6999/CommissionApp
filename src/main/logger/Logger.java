@@ -1,4 +1,4 @@
-package src.logger;
+package main.logger;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,20 +10,10 @@ import java.util.stream.Collectors;
 
 public class Logger {
 
-    private File currentLogFile;
-
     private Logger() {
-        LocalDate localDate = LocalDate.now();
-        File logsFolder = new File("./logs");
-        currentLogFile = new File("./logs/" + localDate + ".log");
-        try {
-            logsFolder.mkdirs();
-            currentLogFile.createNewFile();
-        } catch (IOException e) {
-            System.out.println(ERROR_TAG + " Error while creating log file.");
-        }
     }
 
+    private Boolean mute = false;
     private static final Logger instance = new Logger();
     private static final String DEBUG_TAG = "[DEBUG]";
     private static final String ERROR_TAG = "[ERROR]";
@@ -35,29 +25,26 @@ public class Logger {
     }
 
     public void DEBUG(String message) {
-        if (currentLogFile == null) {
-            throw new IllegalStateException(LOG_FAILED);
-        }
         String logString = getLogString(message, DEBUG_TAG);
-        System.out.println(logString);
+        if (!mute) {
+            System.out.println(logString);
+        }
     }
 
     public void INFO(String message) {
-        if (currentLogFile == null) {
-            throw new IllegalStateException(LOG_FAILED);
-        }
         String logString = getLogString(message, INFO_TAG);
-        writeLogFile(logString);
-        System.out.println(logString);
+        if (!mute) {
+            writeLogFile(logString);
+            System.out.println(logString);
+        }
     }
 
     public void ERROR(String message) {
-        if (currentLogFile == null) {
-            throw new IllegalStateException(LOG_FAILED);
-        }
         String logString = getLogString(message, ERROR_TAG);
-        writeLogFile(logString);
-        System.out.println(logString);
+        if (!mute) {
+            writeLogFile(logString);
+            System.out.println(logString);
+        }
     }
 
     private static String getLogString(String message, String TAG) {
@@ -67,11 +54,24 @@ public class Logger {
     }
 
     private void writeLogFile(String logString) {
-        try (FileWriter fileWriter = new FileWriter(currentLogFile, true)) {
+        LocalDate localDate = LocalDate.now();
+        File logsFolder = new File("./logs");
+        File logFile = new File("./logs/" + localDate + ".log");
+        try {
+            logsFolder.mkdirs();
+            logFile.createNewFile();
+        } catch (IOException e) {
+            System.out.println(ERROR_TAG + " Error while creating log file.");
+        }
+        try (FileWriter fileWriter = new FileWriter(logFile, true)) {
             fileWriter.write(logString + "\n");
         } catch (IOException e) {
             System.out.println(ERROR_TAG + " Error while appending log file.");
         }
+    }
+
+    public void muteLogger() {
+        mute = true;
     }
 
 }

@@ -1,4 +1,4 @@
-package src.xml;
+package main.xml;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,27 +43,27 @@ public class XMLNode {
         this.value = value;
     }
 
-    public String beautifyNode(int indentAmount) {
+    public String beautifyNode() {
         if (children.isEmpty()) {
             return value;
         } else {
             StringJoiner sj = new StringJoiner("\n");
             sj.add(getOpeningTag());
             for (XMLNode child : children) {
-                sj.add(indentNode(child, indentAmount));
+                sj.add(indentNode(child));
             }
             sj.add(getClosingTag());
             return sj.toString();
         }
     }
 
-    private String indentNode(XMLNode node, int indentAmount) {
-        String nodeString = node.beautifyNode(indentAmount);
+    private String indentNode(XMLNode node) {
+        String nodeString = node.beautifyNode();
         return nodeString.lines().map(s -> "\t" + s).collect(Collectors.joining("\n"));
     }
 
     @Override
     public String toString() {
-        return beautifyNode(0);
+        return beautifyNode();
     }
 }

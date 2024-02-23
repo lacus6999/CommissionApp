@@ -1,6 +1,6 @@
-package src.xml;
+package main.xml;
 
-import src.logger.Logger;
+import main.logger.Logger;
 
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
@@ -21,6 +21,7 @@ public class XML {
             Class<?> oClass = object.getClass();
             // First node is the name of the class
             XMLNode baseNode = new XMLNode(oClass.getName().replace(oClass.getPackageName() + ".", ""));
+
             XMLNode node = extractNodes(baseNode, object, stoppingType);
             return xmlContent.append(node).toString();
         } catch (ReflectiveOperationException e) {

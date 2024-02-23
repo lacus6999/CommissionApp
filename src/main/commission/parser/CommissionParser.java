@@ -1,6 +1,6 @@
-package src.commission.parser;
+package main.commission.parser;
 
-import src.commission.dto.CommissionRawData;
+import main.commission.dto.CommissionRawData;
 
 import java.util.List;
 

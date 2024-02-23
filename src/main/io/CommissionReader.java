@@ -1,8 +1,8 @@
-package src.io;
+package main.io;
 
-import src.commission.CommissionType;
-import src.commission.dto.CommissionRawData;
-import src.logger.Logger;
+import main.commission.CommissionType;
+import main.commission.dto.CommissionRawData;
+import main.logger.Logger;
 
 import java.io.File;
 import java.io.IOException;

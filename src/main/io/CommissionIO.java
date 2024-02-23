@@ -1,9 +1,9 @@
-package src.io;
+package main.io;
 
-import src.commission.dto.CommissionRawData;
-import src.commission.parser.CommissionToXMLParsingObject;
-import src.logger.Logger;
-import src.xml.XML;
+import main.commission.dto.CommissionRawData;
+import main.commission.parser.CommissionToXMLParsingObject;
+import main.logger.Logger;
+import main.xml.XML;
 
 import java.io.File;
 import java.io.FileWriter;
